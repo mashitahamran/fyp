@@ -23,7 +23,11 @@ Route::get('/api/login', 'ApiController@showLoginForm');
 
 Route::post('/api/login', 'ApiController@login');
 Route::get('/api/user/{id}', function ($id) {
-    return App\User::find($id)->score;
+
+    return response()->json([
+        'score' => App\User::find($id)->score,
+    ]);
+
 });
 
 Route::get('/api/users', function () {
