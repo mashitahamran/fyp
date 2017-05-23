@@ -25,3 +25,7 @@ Route::post('/api/login', 'ApiController@login');
 Route::get('/api/user/{id}', function ($id) {
     return App\User::find($id)->score;
 });
+
+Route::get('/api/users', function () {
+    return App\User::all();
+});
