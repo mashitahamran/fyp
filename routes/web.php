@@ -87,3 +87,12 @@ Route::get('/access', function () {
 
     return view('access', compact('users'));
 });
+
+Route::get('/log-keluar', function (Illuminate\Http\Request $request) {
+
+    $request->session()->flush();
+
+    $request->session()->regenerate();
+
+    return redirect('/');
+});

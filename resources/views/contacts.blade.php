@@ -33,7 +33,7 @@
                              </span> <span class="text-muted text-xs block">ADMIN <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
 
-                            <li><a href="/logout">Logout</a></li>
+                            <li><a href="/log-keluar">Logout</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -97,7 +97,7 @@
 
 
                 <li>
-                    <a href="/logout">
+                    <a href="/log-keluar">
                         <i class="fa fa-sign-out"></i> Log out
                     </a>
                 </li>
