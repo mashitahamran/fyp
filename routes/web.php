@@ -30,6 +30,60 @@ Route::get('/api/user/{id}', function ($id) {
 
 });
 
+Route::get('/insert-score/{id}/{score}', function ($id, $score) {
+    $user = App\User::find($id);
+
+    $user->score = $score;
+    $user->save();
+
+    return response()->json([
+        'status' => 'success',
+    ]);
+
+});
+
 Route::get('/api/users', function () {
     return App\User::all();
+});
+
+Route::get('/performance', function () {
+    $users = App\User::whereCategory(1)->get();
+    return view('/performance', compact('users'));
+});
+
+Route::get('/staff_reg', function () {
+    return view('staff_reg');
+});
+
+Route::post('/staff_reg', function (Illuminate\Http\Request $request) {
+
+    App\User::create([
+        'name'        => $request->fullname,
+        'email'       => $request->staffid,
+        'password'    => Illuminate\Support\Facades\Hash::make($request->password),
+        'mail'        => $request->email,
+        'fullname'    => $request->fullname,
+        'nric'        => $request->nric,
+        'birthday'    => $request->birthday,
+        'age'         => $request->age,
+        'gender'      => $request->gender,
+        'address'     => $request->address,
+        'phoneNumber' => $request->phoneNumber,
+        'score'       => 0,
+        'category'    => 2,
+    ]);
+
+    return redirect('/contacts');
+
+});
+
+Route::get('/contacts', function () {
+    $users = App\User::whereCategory(2)->get();
+    return view('contacts', compact('users'));
+});
+
+Route::get('/access', function () {
+    $users = App\LoginLog::all();
+
+    return view('access', compact('users'));
 });

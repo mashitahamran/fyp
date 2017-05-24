@@ -61,6 +61,11 @@ class ApiController extends Controller
 
     protected function sendLoginResponse(Request $request)
     {
+        \App\LoginLog::create([
+            'username'   => $request->email,
+            'type_login' => "Web",
+        ]);
+
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
@@ -83,8 +88,10 @@ class ApiController extends Controller
 
     public function score($id)
     {
-        return $id;
-        return User::find($id);
+        // return $id;
+        return response()->json([
+            'score' => User::find($id)->score,
+        ]);
     }
 
 }
