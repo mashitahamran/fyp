@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Mobile Learning Animals for Kindergarten
+                    .Mobile Learning Animals for Kindergarten.
                 </div>
 
 
